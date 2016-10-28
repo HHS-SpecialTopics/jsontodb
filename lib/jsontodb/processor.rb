@@ -1,6 +1,5 @@
 module JSONtoDB
-  # This module processes
-  # commands passed to the
+  # This module processes commands passed to the
   # command-line interface
   module Processor
     module_function
@@ -11,17 +10,27 @@ module JSONtoDB
 
       case command
       when 'get'
+        return unless check_args('put', 1, args)
         res = JSONtoDB::REST.get(args[0], user, pass)
         puts res
       when 'delete'
+        return unless check_args('put', 1, args)
         JSONtoDB::REST.delete(args[0], user, pass)
       when 'put'
-        JSONtoDB::REST.put(args[0], user, pass)
+        return unless check_args('put', 2, args)
+        JSONtoDB::REST.put(args[0], args[1], user, pass)
       when 'post'
-        JSONtoDB::REST.post(args[0], user, pass)
+        return unless check_args('put', 2, args)
+        JSONtoDB::REST.post(args[0], args[1], user, pass)
       else
         puts "Unknown command '#{command}'."
       end
+    end
+
+    def check_args(command, expected, actual)
+      return true if actual.length == expected
+      puts "ERROR: Command '#{command}' expected #{expected} parameter(s) but received #{actual.length}!"
+      false
     end
   end
 end

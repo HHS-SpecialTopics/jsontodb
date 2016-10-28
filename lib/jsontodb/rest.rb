@@ -1,8 +1,7 @@
 require 'net/http'
 
 module JSONtoDB
-  # This module handles
-  # REST requests
+  # This module handles REST requests
   module REST
     module_function
 
@@ -30,12 +29,12 @@ module JSONtoDB
       handle_errors(response)
     end
 
-    def put(url, user, pass)
+    def put(url, src, user, pass)
       uri = URI(url)
       request = Net::HTTP::Put.new(uri)
       request.basic_auth(user, pass)
       request.content_type = 'application/json'
-      request.set_form_data('title' => 'Test Title', 'content' => 'This is a test post.')
+      request.set_form_data(JSONtoDB::IO.read(src))
 
       response = Net::HTTP.start(uri.hostname, uri.port) do |http|
         http.request(request)
@@ -44,12 +43,12 @@ module JSONtoDB
       handle_errors(response)
     end
 
-    def post(url, user, pass)
+    def post(url, src, user, pass)
       uri = URI(url)
       request = Net::HTTP::Post.new(uri)
       request.basic_auth(user, pass)
       request.content_type = 'application/json'
-      request.set_form_data('status' => 'publish', 'title' => 'Test Title', 'content' => 'This is a test post.')
+      request.set_form_data(JSONtoDB::IO.read(src))
 
       response = Net::HTTP.start(uri.hostname, uri.port) do |http|
         http.request(request)

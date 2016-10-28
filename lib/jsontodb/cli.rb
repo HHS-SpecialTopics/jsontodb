@@ -2,9 +2,7 @@ require 'io/console'
 require 'base64'
 
 module JSONtoDB
-  # This module handles the
-  # command-line interface for
-  # JSONtoDB
+  # This module handles the command-line interface for JSONtoDB
   module CLI
     module_function
 

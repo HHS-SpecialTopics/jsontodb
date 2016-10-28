@@ -1,9 +1,5 @@
-# This library provides
-# functionality to perform
-# REST operations from the
-# command-line.  It also
-# provides the capability to
-# use JSON in HTTP requests
+# This library provides functionality to perform REST operations from the
+# command-line.  It also provides the capability to use JSON in HTTP requests.
 #
 # Licensed under the MIT License:
 #
@@ -28,6 +24,7 @@
 # SOFTWARE.
 module JSONtoDB
   autoload :CLI, 'jsontodb/cli'
+  autoload :IO, 'jsontodb/io'
   autoload :Processor, 'jsontodb/processor'
   autoload :REST, 'jsontodb/rest'
 end
