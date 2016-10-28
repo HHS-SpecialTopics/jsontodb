@@ -9,7 +9,7 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
-test.txt
+test.json
 
 ## Specific to RubyMotion:
 .dat*
