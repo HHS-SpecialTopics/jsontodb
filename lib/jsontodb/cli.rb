@@ -10,9 +10,9 @@ module JSONtoDB
 
     def run
       if !ARGV.empty?
-        if ARGV.length > 2
+        if ARGV.length >= 2
           authentication_credentials(ARGV.shift, ARGV.shift)
-          if ARGV.length == 2
+          if ARGV.empty?
             continuous_cli
           else
             JSONtoDB::Processor.run_command(ARGV, @user, @pass)
@@ -33,7 +33,7 @@ module JSONtoDB
         @user = STDIN.gets.chomp
         print 'Password: '
         @pass = STDIN.noecho(&:gets).chomp
-        puts
+        puts ''
       else
         @user = user
         @pass = pass
