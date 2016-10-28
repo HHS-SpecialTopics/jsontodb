@@ -7,7 +7,7 @@ module JSONtoDB
     module_function
 
     def read(src)
-      hash = JSON.parse(src)
+      hash = JSON.parse(File.read(src))
       hash
     end
   end
