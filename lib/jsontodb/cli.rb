@@ -31,7 +31,8 @@ module JSONtoDB
         @user = STDIN.gets.chomp
         print 'Password: '
         @pass = STDIN.noecho(&:gets).chomp
-        puts ''
+        puts
+        puts
       else
         @user = user
         @pass = pass
