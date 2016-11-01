@@ -63,8 +63,7 @@ $ [parent command] post [url] [source file]
 The only source data type (or content type) that **JSONtoDB** currently supports is [JSON](http://www.json.org/), hence the name **JSONtoDB**.
 
 ## Authentication
-**JSONtoDB** offers basic authentication capabilities.  If you are using the interactive shell mode, it will prompt for credentials.  Otherwise, you
-can pass them in as the first two parameters to the `jsontodb` command.
+**JSONtoDB** offers [basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) functionality only at this time.  If you are using the interactive shell mode, it will prompt for credentials.  Otherwise, you can pass them in as the first two parameters to the `jsontodb` command.
 
 ## Copyright
 Copyright (c) 2016 Christopher Lutz. See [LICENSE.txt](LICENSE.txt) for details.
