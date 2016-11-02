@@ -6,49 +6,44 @@ module JSONtoDB
     module_function
 
     def get(url, user, pass)
-      uri = URI(url)
-      request = Net::HTTP::Get.new(uri)
-      request.basic_auth(user, pass)
-
-      response = Net::HTTP.start(uri.hostname, uri.port) do |http|
-        http.request(request)
-      end
-
-      handle_errors(response)
+      no_data_request(Net::HTTP::Get, url, user, pass)
     end
 
     def delete(url, user, pass)
-      uri = URI(url)
-      request = Net::HTTP::Delete.new(uri)
-      request.basic_auth(user, pass)
+      no_data_request(Net::HTTP::Delete, url, user, pass)
+    end
 
-      response = Net::HTTP.start(uri.hostname, uri.port) do |http|
-        http.request(request)
-      end
+    def no_data_request(klass, url, user, pass)
+      request = basic_request(klass, url, user, pass)
 
-      handle_errors(response)
+      make_request(url, request)
     end
 
     def put(url, src, user, pass)
-      uri = URI(url)
-      request = Net::HTTP::Put.new(uri)
-      request.basic_auth(user, pass)
-      request.content_type = 'application/json'
-      request.set_form_data(JSONtoDB::IO.read(src))
-
-      response = Net::HTTP.start(uri.hostname, uri.port) do |http|
-        http.request(request)
-      end
-
-      handle_errors(response)
+      data_request(Net::HTTP::Put, url, src, user, pass)
     end
 
     def post(url, src, user, pass)
-      uri = URI(url)
-      request = Net::HTTP::Post.new(uri)
-      request.basic_auth(user, pass)
+      data_request(Net::HTTP::Post, url, src, user, pass)
+    end
+
+    def data_request(klass, url, src, user, pass)
+      request = basic_request(klass, url, user, pass)
       request.content_type = 'application/json'
       request.set_form_data(JSONtoDB::IO.read(src))
+
+      make_request(url, request)
+    end
+
+    def basic_request(klass, url, user, pass)
+      uri = URI(url)
+      request = klass.new(uri)
+      request.basic_auth(user, pass)
+      request
+    end
+
+    def make_request(url, request)
+      uri = URI(url)
 
       response = Net::HTTP.start(uri.hostname, uri.port) do |http|
         http.request(request)
