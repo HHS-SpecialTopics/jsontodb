@@ -24,6 +24,7 @@
 # SOFTWARE.
 module JSONtoDB
   autoload :CLI, 'jsontodb/cli'
+  autoload :Configuration, 'jsontodb/configuration'
   autoload :IO, 'jsontodb/io'
   autoload :Processor, 'jsontodb/processor'
   autoload :REST, 'jsontodb/rest'
