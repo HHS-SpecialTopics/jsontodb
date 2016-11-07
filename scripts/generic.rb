@@ -21,9 +21,12 @@ if url == ''
   exit(1)
 end
 
+set_processor(processor) unless processor == ''
 
+set_credentials(user, pass) unless (user == '') || (pass == '')
 
 files = Dir["#{src_dir}#{'/' unless src_dir == ''}**/*.json"]
 
 files.each do |file|
+  post_file(file)
 end
