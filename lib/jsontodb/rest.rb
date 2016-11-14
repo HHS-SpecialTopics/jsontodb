@@ -28,6 +28,18 @@ module JSONtoDB
     end
 
     def data_request(klass, url, src, user, pass)
+      if File.directory?(src)
+
+        Dir["#{src}/*.json"].each do |_file|
+          file_request(klass, url, src, user, pass)
+        end
+
+      elsif File.file?(src)
+        file_request(klass, url, src, user, pass)
+      end
+    end
+
+    def file_request(klass, url, src, user, pass)
       request = basic_request(klass, url, user, pass)
       request.content_type = 'application/json'
       request.set_form_data(JSONtoDB::IO.read(src))
