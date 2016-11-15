@@ -17,10 +17,14 @@ module JSONtoDB
             run_command([command, url], @user, @pass)
           elsif files.is_a?(Array)
             files.each do |file|
-              run_command([command, url, file], @user, @pass)
+              Dir[file].each do |f|
+                run_command([command, url, f], @user, @pass)
+              end
             end
           else
-            run_command([command, url, files], @user, @pass)
+            Dir[files].each do |f|
+              run_command([command, url, f], @user, @pass)
+            end
           end
         end
       end

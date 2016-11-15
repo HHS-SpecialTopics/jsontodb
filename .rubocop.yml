@@ -9,7 +9,7 @@ Metrics/LineLength:
   Max: 120
 Metrics/MethodLength:
   CountComments: false
-  Max: 20
+  Max: 25
 Metrics/PerceivedComplexity:
   Max: 8
 EndOfLine:
