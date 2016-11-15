@@ -1,0 +1,12 @@
+CredPrompt: true
+Matrix:
+  - Files: '*.json'
+    Url: 'test.example.com'
+    Command: 'post'
+  - Files: '*.json'
+    Url: 'test.example.com'
+    Command: 'post'
+  - Files: '*.json'
+    Url: 'test.example.com'
+    Command: 'post'
+Interactive: true

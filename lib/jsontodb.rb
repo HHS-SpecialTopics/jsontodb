@@ -1,3 +1,5 @@
+require 'cogwheels'
+
 # This library provides functionality to perform REST operations from the
 # command-line.  It also provides the capability to use JSON in HTTP requests.
 #
@@ -24,8 +26,15 @@
 # SOFTWARE.
 module JSONtoDB
   autoload :CLI, 'jsontodb/cli'
-  autoload :Configuration, 'jsontodb/configuration'
   autoload :IO, 'jsontodb/io'
   autoload :Processor, 'jsontodb/processor'
   autoload :REST, 'jsontodb/rest'
+
+  CONFIG = if ARGV.empty?
+             Cogwheels.load(File.join(File.dirname(__FILE__), '/../config/generic.yml'))
+           else
+             Cogwheels.load(ARGV.shift)
+           end
+
+  puts CONFIG.inspect
 end

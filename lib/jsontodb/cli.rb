@@ -6,21 +6,7 @@ module JSONtoDB
   module CLI
     module_function
 
-    def run
-      if !ARGV.empty?
-        if ARGV.length >= 2
-          authentication_credentials(ARGV.shift, ARGV.shift)
-          if ARGV.empty?
-            continuous_cli
-          else
-            JSONtoDB::Processor.run_command(ARGV, @user, @pass)
-          end
-        end
-      else
-        authentication_credentials
-        continuous_cli
-      end
-    end
+    attr_reader :user, :pass
 
     def authentication_credentials(user = nil, pass = nil)
       if user.nil? || pass.nil?

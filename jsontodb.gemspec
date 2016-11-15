@@ -4,7 +4,7 @@ require 'jsontodb/version'
 
 Gem::Specification.new do |s|
   s.name        = 'jsontodb'
-  s.version     = JSONtoDB::Version::STRING
+  s.version     = JSONtoDB::VERSION
   s.license     = 'MIT'
   s.authors     = ['Christopher Lutz']
   s.email       = ['lutzblox@gmail.com']
@@ -16,4 +16,6 @@ Gem::Specification.new do |s|
 
   s.summary     = 'A Ruby library to perform REST requests from the command-line and insert JSON into databases'
   s.homepage    = 'https://github.com/HHS-SpecialTopics/jsontodb'
+
+  s.add_runtime_dependency 'cogwheels', '~> 0.1'
 end
