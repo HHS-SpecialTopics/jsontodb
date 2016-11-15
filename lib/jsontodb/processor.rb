@@ -7,29 +7,31 @@ module JSONtoDB
     def run_config
       check_auth
 
-      if JSONtoDB.CONFIG.key?('Matrix')
-        JSONtoDB.CONFIG['Matrix'].each do |hash|
+      unless JSONtoDB::CONFIG['Matrix'].nil?
+        JSONtoDB::CONFIG['Matrix'].each do |hash|
           files = hash['Files']
           url = hash['Url']
           command = hash['Command']
 
           if files.nil?
             run_command([command, url], @user, @pass)
-          else
+          elsif files.is_a?(Array)
             files.each do |file|
               run_command([command, url, file], @user, @pass)
             end
+          else
+            run_command([command, url, files], @user, @pass)
           end
         end
       end
 
-      JSONtoDB::CLI.continuous_cli if JSONtoDB.CONFIG['Interactive']
+      JSONtoDB::CLI.continuous_cli if JSONtoDB::CONFIG['Interactive']
     end
 
     def check_auth
-      @user = JSONtoDB.CONFIG['User']
-      @pass = JSONtoDB.CONFIG['Pass']
-      return unless JSONtoDB.CONFIG['CredPrompt']
+      @user = JSONtoDB::CONFIG['User']
+      @pass = JSONtoDB::CONFIG['Pass']
+      return unless JSONtoDB::CONFIG['CredPrompt']
       JSONtoDB::CLI.authentication_credentials(@user, @pass)
       @user = JSONtoDB::CLI.user
       @pass = JSONtoDB::CLI.pass
