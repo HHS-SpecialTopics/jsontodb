@@ -30,11 +30,15 @@ module JSONtoDB
   autoload :Processor, 'jsontodb/processor'
   autoload :REST, 'jsontodb/rest'
 
+  module_function
+
   CONFIG = if ARGV.empty?
              Cogwheels.load(File.join(File.dirname(__FILE__), '/../config/generic.yml'))
            else
              Cogwheels.load(ARGV.shift)
            end
 
-  puts CONFIG.inspect
+  def start
+    JSONtoDB::Processor.run_config
+  end
 end

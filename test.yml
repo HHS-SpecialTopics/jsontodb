@@ -1,0 +1,8 @@
+User: chrisblutz
+Pass: jy8l rWVb NWpF kSuO SekB 5bfI
+Matrix:
+    - Files: test.json
+      Url: http://sacs-backend-chrisblutz.c9users.io/wp-json/wp/v2/posts
+      Command: post
+    - Url: http://sacs-backend-chrisblutz.c9users.io/wp-json/wp/v2/posts
+      Command: get
