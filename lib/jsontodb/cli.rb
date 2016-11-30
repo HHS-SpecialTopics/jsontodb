@@ -6,7 +6,7 @@ module JSONtoDB
   module CLI
     module_function
 
-    attr_reader :user, :pass
+    attr_accessor :user, :pass
 
     def authentication_credentials(user = nil, pass = nil)
       if user.nil? || pass.nil?
@@ -23,6 +23,14 @@ module JSONtoDB
         @user = user
         @pass = pass
       end
+    end
+
+    def user
+      @user
+    end
+
+    def pass
+      @pass
     end
 
     def continuous_cli

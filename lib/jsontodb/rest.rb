@@ -30,8 +30,8 @@ module JSONtoDB
     def data_request(klass, url, src, user, pass)
       if File.directory?(src)
 
-        Dir["#{src}/*.json"].each do |_file|
-          file_request(klass, url, src, user, pass)
+        Dir["#{src}/*.json"].each do |file|
+          file_request(klass, url, file, user, pass)
         end
 
       elsif File.file?(src)

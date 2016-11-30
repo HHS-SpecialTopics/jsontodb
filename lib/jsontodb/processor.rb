@@ -22,8 +22,8 @@ module JSONtoDB
               end
             end
           else
-            entries = Dir[files].entries.sort_by { |x| -(x[/\d+/].to_i) }
-	          entries.each do |f|
+            entries = Dir[files].entries.sort_by { |x| -x[/\d+/].to_i }
+            entries.each do |f|
               run_command([command, url, f], @user, @pass)
             end
           end

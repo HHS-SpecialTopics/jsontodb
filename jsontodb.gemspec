@@ -17,5 +17,5 @@ Gem::Specification.new do |s|
   s.summary     = 'A Ruby library to perform REST requests from the command-line and insert JSON into databases'
   s.homepage    = 'https://github.com/HHS-SpecialTopics/jsontodb'
 
-  s.add_runtime_dependency 'cogwheels', '~> 0.1'
+  s.add_runtime_dependency 'cogwheels', '~> 0.2'
 end
