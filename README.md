@@ -10,9 +10,10 @@ To install, use the standard RubyGems syntax:
 ```sh
 $ gem install jsontodb
 ```
-Or if necessary, you can add it to your `Gemfile`:
+Or if necessary, you can add it to your `Gemfile`.
+If you take this path, version `2.1.1` is the recommended earliest version in the `2.0` series, because all previous `2.x.x` version suffer from an issue in the `gemspec` that did not include default configuration files in the bundled gem.
 ```rb
-gem 'jsontodb'
+gem 'jsontodb', '>= 2.1.1'
 ```
 
 ## Usage
