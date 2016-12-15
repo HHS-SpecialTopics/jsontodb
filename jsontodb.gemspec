@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 1.9'
 
-  s.files = `git ls-files bin lib LICENSE.txt README.md`.split($RS)
+  s.files = `git ls-files bin lib config LICENSE.txt README.md`.split($RS)
   s.executables << 'jsontodb'
 
   s.summary     = 'A Ruby library to perform REST requests from the command-line and insert JSON into databases'
